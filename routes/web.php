@@ -3,6 +3,10 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
+
+use App\Http\Controllers\Auth\SocialiteController;
+use Laravel\Socialite\Facades\Socialite;
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -18,3 +22,10 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+
+Route::get('/auth/google', function () {
+    return Socialite::driver('google')->redirect();
+})->name('google.redirect');
+
+Route::get('/auth/google/callback', [SocialiteController::class, 'handleGoogleCallback']);
