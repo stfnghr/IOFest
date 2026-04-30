@@ -1,95 +1,139 @@
 <x-guest-layout>
-    <div class="fixed inset-0 flex flex-col lg:flex-row bg-white overflow-y-auto">
-        
-        <div class="relative hidden lg:flex lg:w-1/2 bg-gradient-to-br from-[#4F46E5] via-[#7C3AED] to-[#EC4899] items-center justify-center p-12 overflow-hidden">
-            <div class="absolute -top-24 -left-24 w-96 h-96 bg-white/10 rounded-full blur-3xl animate-pulse"></div>
-            <div class="absolute -bottom-24 -right-24 w-[500px] h-[500px] bg-indigo-300/20 rounded-full blur-3xl"></div>
+    <div class="min-h-screen bg-white">
+        <div class="mx-auto grid min-h-screen max-w-7xl grid-cols-1 lg:grid-cols-2">
+            <div class="relative hidden overflow-hidden bg-gradient-to-br from-indigo-600 via-violet-600 to-fuchsia-500 p-12 lg:flex lg:flex-col lg:justify-between">
+                <div class="absolute -top-24 -left-24 h-96 w-96 rounded-full bg-white/10 blur-3xl"></div>
+                <div class="absolute -bottom-32 -right-32 h-[520px] w-[520px] rounded-full bg-indigo-300/20 blur-3xl"></div>
 
-            <div class="relative z-10 text-center text-white max-w-lg">
-                <img src="https://ouch-cdn2.icons8.com/XF9O9O4fHq-I8l8lXjO-v3q3-i7-9-I-9-I-9-I-9-I/rs:fit:456:456/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9zdmcvMjY1/L2Y0Zjg4ZGE0LWEw/NzAtNGIyNC1iMTI3/LTBkZjg4MDNkNDM2/OC5zdmc.png" 
-                     alt="UC HUB Mascot" 
-                     class="w-full max-w-[400px] mx-auto drop-shadow-[0_35px_35px_rgba(0,0,0,0.3)] animate-float">
-                
-                <h1 class="text-6xl font-black mt-12 tracking-tighter uppercase italic">UC HUB</h1>
-                <p class="text-xl font-medium text-indigo-100 mt-4 leading-relaxed">
-                    Sistem Terintegrasi Magang Mahasiswa, Mitra Industri, dan Akreditasi Kampus. 
-                </p>
-                
-                <div class="mt-10 flex flex-wrap justify-center gap-6 text-[10px] font-black uppercase tracking-[0.2em] opacity-60">
-                    <span class="border-b-2 border-white/30 pb-1">Verified Student</span>
-                    <span class="border-b-2 border-white/30 pb-1">Verified Company</span>
-                    <span class="border-b-2 border-white/30 pb-1">BAN-PT Ready</span>
+                <div class="relative z-10">
+                    <div class="inline-flex items-center gap-3 rounded-2xl bg-white/10 px-4 py-2 text-white ring-1 ring-white/15">
+                        <span class="text-sm font-black tracking-tight">UC HUB</span>
+                        <span class="text-[10px] font-black uppercase tracking-[0.2em] opacity-75">Platform Magang & Karir</span>
+                    </div>
+                </div>
+
+                <div class="relative z-10">
+                    <div class="rounded-3xl bg-white/10 p-8 ring-1 ring-white/15 backdrop-blur">
+                        <p class="text-xs font-black uppercase tracking-[0.2em] text-white/70">Hero Illustration</p>
+                        <div class="mt-4 grid place-items-center rounded-2xl bg-white/10 p-10">
+                            <div class="text-center">
+                                <p class="text-lg font-black tracking-tight text-white">Students × Office Buildings</p>
+                                <p class="mt-2 text-sm font-medium text-white/70">Modern illustration placeholder</p>
+                            </div>
+                        </div>
+                        <h1 class="mt-8 text-5xl font-black tracking-tight text-white">
+                            Satu pintu akses magang terverifikasi.
+                        </h1>
+                        <p class="mt-3 text-base font-medium text-indigo-50/90">
+                            Login mahasiswa melalui University ID (SSO). Perusahaan memiliki portal onboarding terpisah.
+                        </p>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="w-full lg:w-1/2 flex items-center justify-center p-6 sm:p-12 lg:p-24 bg-white">
-            <div class="w-full max-w-md space-y-8 animate-slide-up">
-                
-                <div class="text-left">
-                    <h2 class="text-5xl font-black text-slate-900 tracking-tighter">Sign In.</h2>
-                    <p class="text-slate-500 mt-3 font-semibold text-lg leading-tight">
-                        Masuk untuk akses Dashboard UC HUB Anda. [cite: 3, 22, 47]
-                    </p>
-                </div>
-
-                <div class="pt-2">
-                    <a href="{{ route('google.redirect') }}" 
-                       class="flex items-center justify-center gap-4 w-full py-4 bg-white border-2 border-slate-100 rounded-[24px] font-black text-slate-700 shadow-sm hover:bg-slate-50 hover:border-indigo-200 hover:shadow-lg transition-all duration-300 transform active:scale-[0.97]">
-                        <img src="https://www.gstatic.com/images/branding/product/1x/gsa_512dp.png" class="h-6 w-6">
-                        <span>Lanjut dengan Akun Google</span>
-                    </a>
-                </div>
-
-                <div class="relative flex py-4 items-center">
-                    <div class="flex-grow border-t border-slate-100"></div>
-                    <span class="flex-shrink mx-4 text-slate-300 text-[10px] font-black uppercase tracking-widest">Portal Login</span>
-                    <div class="flex-grow border-t border-slate-100"></div>
-                </div>
-
-                <form method="POST" action="{{ route('login') }}" class="space-y-6">
-                    @csrf
-                    <div class="space-y-1">
-                        <x-input-label for="email" :value="__('EMAIL PORTAL')" class="text-[10px] font-black text-slate-400 tracking-[0.1em]" />
-                        <x-text-input id="email" class="block w-full px-6 py-4 bg-slate-50 border-none focus:ring-4 focus:ring-indigo-500/10 rounded-[20px] font-medium text-slate-700 transition-all" type="email" name="email" :value="old('email')" required autofocus />
-                        <x-input-error :messages="$errors->get('email')" class="mt-2" />
+            <div class="flex items-center justify-center px-6 py-12 sm:px-12 lg:px-16">
+                <div class="w-full max-w-md" x-data="{ tab: 'student', showPassword: false }">
+                    <div class="mb-10">
+                        <h2 class="text-4xl font-black tracking-tight text-slate-900">Sign in</h2>
+                        <p class="mt-2 text-sm font-semibold text-slate-500">
+                            Masuk ke UC HUB sesuai tipe akun.
+                        </p>
                     </div>
 
-                    <div class="space-y-1">
-                        <div class="flex justify-between items-center">
-                            <x-input-label for="password" :value="__('PASSWORD')" class="text-[10px] font-black text-slate-400 tracking-[0.1em]" />
-                            <a href="{{ route('password.request') }}" class="text-[10px] font-black text-indigo-600 hover:text-indigo-800 uppercase tracking-widest">Lupa?</a>
+                    <div class="rounded-2xl bg-slate-50 p-1 ring-1 ring-slate-200">
+                        <div class="grid grid-cols-2 gap-1">
+                            <button type="button"
+                                class="rounded-xl px-4 py-3 text-sm font-black"
+                                :class="tab === 'student' ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-500 hover:text-slate-700'"
+                                @click="tab = 'student'">
+                                Student Login
+                            </button>
+                            <button type="button"
+                                class="rounded-xl px-4 py-3 text-sm font-black"
+                                :class="tab === 'company' ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-500 hover:text-slate-700'"
+                                @click="tab = 'company'">
+                                Company Login
+                            </button>
                         </div>
-                        <x-text-input id="password" class="block w-full px-6 py-4 bg-slate-50 border-none focus:ring-4 focus:ring-indigo-500/10 rounded-[20px] font-medium text-slate-700 transition-all" type="password" name="password" required />
-                        <x-input-error :messages="$errors->get('password')" class="mt-2" />
                     </div>
 
-                    <div class="pt-4">
-                        <button type="submit" class="w-full py-5 bg-slate-900 text-white rounded-[24px] font-black text-lg shadow-2xl shadow-slate-300 hover:bg-indigo-600 hover:shadow-indigo-200 transition-all duration-300 transform active:scale-[0.97]">
-                            MASUK SEKARANG
-                        </button>
-                    </div>
-                </form>
+                    <div class="mt-8 space-y-6" x-show="tab === 'student'" x-cloak>
+                        <a href="{{ route('google.redirect') }}"
+                           class="group flex w-full items-center justify-center gap-3 rounded-2xl bg-slate-900 px-6 py-4 text-sm font-black text-white shadow-sm hover:bg-indigo-600">
+                            <svg class="h-5 w-5 opacity-90" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 3 2 9l10 6 10-6-10-6Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                                <path d="M6 11v6c0 1.5 3 3 6 3s6-1.5 6-3v-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                            Login with University ID
+                        </a>
 
-                <p class="text-center mt-12 text-sm font-bold text-slate-400 uppercase tracking-widest">
-                    Belum Terdaftar? <a href="{{ route('register') }}" class="text-indigo-600 hover:underline">Buat Akun UC HUB</a> [cite: 73]
-                </p>
+                        <div class="rounded-2xl bg-slate-50 p-6 ring-1 ring-slate-200">
+                            <p class="text-sm font-bold text-slate-700">SSO sedang bermasalah?</p>
+                            <p class="mt-1 text-sm font-medium text-slate-500">
+                                Gunakan registrasi manual sebagai jalur fallback, lalu akun akan diverifikasi oleh Admin Universitas.
+                            </p>
+                            <a href="{{ route('register') }}" class="mt-4 inline-flex rounded-xl bg-white px-4 py-2.5 text-sm font-black text-slate-700 ring-1 ring-slate-200 hover:ring-indigo-300">
+                                Manual Student Register
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="mt-8" x-show="tab === 'company'" x-cloak>
+                        <form method="POST" action="{{ route('login') }}" class="space-y-6">
+                            @csrf
+                            <input type="hidden" name="login_as" value="company" />
+
+                            <div class="space-y-1">
+                                <x-input-label for="email" :value="__('Corporate Email')" class="text-[10px] font-black text-slate-400 tracking-[0.1em]" />
+                                <x-text-input id="email" class="block w-full rounded-2xl border-slate-200 bg-white px-5 py-4 text-sm font-semibold text-slate-700 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                                    type="email" name="email" :value="old('email')" required autofocus />
+                                <x-input-error :messages="$errors->get('email')" class="mt-2" />
+                            </div>
+
+                            <div class="space-y-1">
+                                <div class="flex items-center justify-between">
+                                    <x-input-label for="password" :value="__('Password')" class="text-[10px] font-black text-slate-400 tracking-[0.1em]" />
+                                    <a href="{{ route('password.request') }}" class="text-[10px] font-black text-indigo-600 uppercase tracking-widest hover:text-indigo-800">Forgot?</a>
+                                </div>
+
+                                <div class="relative">
+                                    <x-text-input id="password"
+                                        class="block w-full rounded-2xl border-slate-200 bg-white px-5 py-4 pr-12 text-sm font-semibold text-slate-700 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                                        type="password"
+                                        x-bind:type="showPassword ? 'text' : 'password'"
+                                        name="password"
+                                        required />
+                                    <button type="button"
+                                        class="absolute inset-y-0 right-0 flex items-center px-4 text-slate-400 hover:text-slate-600"
+                                        @click="showPassword = !showPassword"
+                                        :aria-label="showPassword ? 'Hide password' : 'Show password'">
+                                        <svg x-show="!showPassword" class="h-5 w-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z" stroke="currentColor" stroke-width="2"/>
+                                            <path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" stroke="currentColor" stroke-width="2"/>
+                                        </svg>
+                                        <svg x-show="showPassword" class="h-5 w-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M3 3l18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                            <path d="M10.6 10.6a3 3 0 0 0 4.24 4.24" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                            <path d="M9.88 5.08A9.86 9.86 0 0 1 12 4.5c6.5 0 10 7.5 10 7.5a18.3 18.3 0 0 1-4.18 5.01" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                            <path d="M6.2 6.2C3.8 8.1 2 12 2 12s3.5 7 10 7c1.14 0 2.2-.18 3.17-.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                        </svg>
+                                    </button>
+                                </div>
+
+                                <x-input-error :messages="$errors->get('password')" class="mt-2" />
+                            </div>
+
+                            <button type="submit" class="w-full rounded-2xl bg-slate-900 px-6 py-4 text-sm font-black text-white shadow-sm hover:bg-indigo-600">
+                                Sign in as Company
+                            </button>
+                        </form>
+
+                        <p class="mt-8 text-center text-xs font-black uppercase tracking-widest text-slate-400">
+                            New company? <a href="{{ route('company.register') }}" class="text-indigo-600 hover:underline">Create company account</a>
+                        </p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-
-    <style>
-        @keyframes float {
-            0%, 100% { transform: translateY(0) rotate(0); }
-            50% { transform: translateY(-20px) rotate(2deg); }
-        }
-        @keyframes slideUp {
-            from { opacity: 0; transform: translateY(40px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .animate-float { animation: float 6s ease-in-out infinite; }
-        .animate-slide-up { animation: slideUp 1s cubic-bezier(0.16, 1, 0.3, 1); }
-        /* Menghilangkan scrollbar tapi tetap bisa scroll */
-        .overflow-y-auto::-webkit-scrollbar { display: none; }
-    </style>
 </x-guest-layout>

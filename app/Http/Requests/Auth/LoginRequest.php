@@ -50,6 +50,15 @@ class LoginRequest extends FormRequest
             ]);
         }
 
+        if ($this->string('login_as')->toString() === 'company' && Auth::user()?->role !== 'company_hr') {
+            Auth::logout();
+            RateLimiter::hit($this->throttleKey());
+
+            throw ValidationException::withMessages([
+                'email' => 'This account is not registered as a company user.',
+            ]);
+        }
+
         RateLimiter::clear($this->throttleKey());
     }
 
